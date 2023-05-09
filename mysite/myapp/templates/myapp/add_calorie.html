@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Calorie Entry</title>
+    <style>
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333333;
+        }
+        input[type="date"],
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Calorie Entry</h1>
+    <form method="post" action="{% url 'calorie_tracker:add_calorie' %}">
+        {% csrf_token %}
+        <label for="date">Date:</label>
+        <input type="date" name="date" required>
+        <label for="meal">Meal:</label>
+        <input type="text" name="meal" required>
+        <label for="calorie_count">Calorie Count:</label>
+        <input type="number" name="calorie_count" required>
+        <input type="submit" value="Add Entry">
+    </form>
+</body>
+</html>

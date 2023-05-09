@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calorie Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            display: inline-block;
+            background-color: #333333;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #555555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calorie Entries</h1>
+    <ul>
+        {% for entry in entries %}
+            <li>{{ entry.date }} - {{ entry.meal }} - {{ entry.calorie_count }} calories</li>
+        {% empty %}
+            <li>No entries found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'calorie_tracker:add_calorie' %}">Add Entry</a>
+</body>
+</html>
